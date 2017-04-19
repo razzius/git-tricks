@@ -37,8 +37,8 @@ Takes a commit or a range of commits and copies them onto your current branch.
 
 I use this most commonly to get a single commit from another branch or from the reflog.
 
-```
-git cherry-pick razzi/3791
+```sh
+$ git cherry-pick razzi/3791
 ```
 
 ## git clean -f
@@ -117,35 +117,35 @@ By default, it doesn't show stats (unlike merge). But this is just a git setting
 $ git config --global rebase.stat true
 ```
 
-# Git settings
+## Git settings
 
-Git stores settings in 2 places: ~/.gitconfig and .git/config.
+Git stores settings in 2 places: `.git/config` for the local repository and `~/.gitconfig` for global settings.
 
-Local .git/config is usually just stuff like remotes.
+Local `.git/config` is usually just stuff like remotes. Look here to debug why remotes aren't working properly.
 
-~/.gitconfig can have:
+`~/.gitconfig` stores personal configuration, aliases, and other preferences.
 
-- aliases
+### Some `~/.gitconfig` aliases
 
 ```
 [alias]
 # Simple abbreviation
-	cl = clone
+    cl = clone
 
 # Staged changes
-	new = diff --cached
+    new = diff --cached
 
 # Current branch name
-	current = rev-parse --abbrev-ref HEAD
+    current = rev-parse --abbrev-ref HEAD
 ```
 
-A useful command to reset the current branch to the origin:
+Here's a command I use a lot to reset the current branch to the origin:
 
 ```
 $ git reset --hard origin/(git current)
 ```
 
-- configuration
+### Some `~/.gitconfig` preferences
 
 ```
 # Make `git pull` a fetch + rebase rather than fetch + merge
@@ -161,7 +161,7 @@ $ git reset --hard origin/(git current)
     excludesfile = ~/.gitignore_global
 ```
 
-A couple snippets from my .gitignore_global:
+A couple snippets from my `.gitignore_global`:
 
 ```
 *~undo-tree~
@@ -218,7 +218,7 @@ pick 0bc6414728 Make percent actually a percent rather than a ratio
 # Note that empty commits are commented out
 ```
 
-# git reflog
+## git reflog
 
 Now that we've seen we can drop commits (maybe a little too) easily, let's look at `git reflog`, which makes it really hard to lose work.
 
@@ -240,26 +240,24 @@ Checkouts, commits, rebases, and resets are tracked in the reflog.
 
 As long as work is ever committed, you can find it in the reflog.
 
-# git add -p
+## git add -p
 
 Sort of like how `git rebase -i` opens an editor of git commits, `git add -p` interactively goes through unstaged changes. You can press y to state, n to not stage, and e to edit the patch!
 
-```bash
+```diff
 $ git add -p
-diff --git a/scripts/about_app.py b/scripts/about_app.py
-index 834ef0de29..93fae4bea6 100644
---- a/scripts/about_app.py
-+++ b/scripts/about_app.py
-@@ -44,7 +44,7 @@ def _parse_args():
-parser.add_argument('--debug', help='Should only be used for debugging. '
-'Prints to log info to std out',
-action='store_true')
--    parser.add_argument('--pretty', help='Pretty print JSON',
--    +    parser.add_argument('--light', help='Only retrieve version info',
--                             action='store_true')
--                                  return parser.parse_args()
--
--                                  Stage this hunk [])
+diff --git a/README.md b/README.md
+index 0edf6f3..263bebb 100644
+--- a/README.md
++++ b/README.md
+@@ -37,8 +37,8 @@ Takes a commit or a range of commits and copies them onto your current branch.
+
+ I use this most commonly to get a single commit from another branch or from the reflog.
+
+-git cherry-pick razzi/3791
++$ git cherry-pick razzi/3791
+
+Stage this hunk [y,n,q,a,d,/,j,J,g,e,?]? y
 ```
 
 ## git bisect
@@ -281,7 +279,7 @@ Bisecting: 36 revisions left to test after this (roughly 5 steps)``
 
 If you want to end early, `git bisect reset`.
 
-# Other tips
+## WIP commits
 
 Rather than stashing, I use WIP commits so that changes are associated with the proper branch, rather than being in a global stash.
 
@@ -294,7 +292,7 @@ end
 
 I also have a shortcut for `@` to `git reset @^` to undo the WIP commit.
 
-# hub
+## hub
 
 [hub](https://hub.github.com/) is a command line program for interacting with github.
 
@@ -305,7 +303,7 @@ $ hub pull-request
 
 ...
 
-UR-68 utility comparison script
+UR-68 Utility Comparison Script
 
 Also moved all utility scripts to one directory.
 
@@ -326,7 +324,7 @@ https://github.com/sighten/clint/pull/1234
 
 It also wraps every existing git command, so they recommend you alias `git` to `hub`.
 
-# GIT_TRACE
+## GIT_TRACE
 
 Show what commands git is running. Useful for debugging aliases and hooks.
 
@@ -354,6 +352,8 @@ Your branch is up-to-date with 'origin/razzi/ur-68'.
 00:09:54.026583 run-command.c:369       trace: run_command: '.git/hooks/post-checkout' '6deae34b4d93fcadd14286b023bfcdb8d7eba2c0' '011d1aaf4bdeb262c78747b0783febc5f2f6d8ab' '1'
 hi
 ```
+
+It's comming from .git/hooks/post-checkout!
 
 # That's all!
 
