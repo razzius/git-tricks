@@ -354,3 +354,37 @@ Your branch is up-to-date with 'origin/razzi/ur-68'.
 00:09:54.026583 run-command.c:369       trace: run_command: '.git/hooks/post-checkout' '6deae34b4d93fcadd14286b023bfcdb8d7eba2c0' '011d1aaf4bdeb262c78747b0783febc5f2f6d8ab' '1'
 hi
 ```
+
+# That's all!
+
+```
+~/f/git-tricks (master) $ gs
+## Initial commit on master
+?? README.md
+~/f/git-tricks (master) $ ga
+~/f/git-tricks (master) $ gc Add git tricks
+[master (root-commit) b88fa03] Add git tricks
+ 1 file changed, 356 insertions(+)
+ create mode 100644 README.md
+~/f/git-tricks (master) $ git push
+fatal: No configured push destination.
+Either specify the URL from the command-line or configure a remote repository using
+
+    git remote add <name> <url>
+
+and then push using the remote name
+
+    git push <name>
+
+~/f/git-tricks (master) $ hub create
+Updating origin
+created repository: razzius/git-tricks
+~/f/git-tricks (master) $ git push
+Counting objects: 3, done.
+Delta compression using up to 4 threads.
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (3/3), 4.38 KiB | 0 bytes/s, done.
+Total 3 (delta 0), reused 0 (delta 0)
+To github.com:razzius/git-tricks.git
+ * [new branch]      master -> master
+```
