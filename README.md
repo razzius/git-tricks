@@ -170,7 +170,7 @@ A couple snippets from my `.gitignore_global`:
 
 This is handy for editor-specific files and things you don't want to bother with in every repository.
 
-Pro tip: track your global gitconfig in git! [Here's mine](https://github.com/razzius/personal/blob/master/.gitconfig)
+Pro tip: track your global gitconfig in git! [Here's mine](https://github.com/razzius/dotfiles/blob/master/.gitconfig)
 
 ## git rebase -i
 
