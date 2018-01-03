@@ -262,7 +262,7 @@ Stage this hunk [y,n,q,a,d,/,j,J,g,e,?]? y
 
 ## git bisect
 
-This command helps find the commit that introduced some bug by marking a known good commit (perhaps develop) and a known bad commit (probably HEAD) then letting git bisect the commits between them.
+This command helps find the commit that introduced some bug by marking a known good commit (perhaps master) and a known bad commit (probably HEAD) then letting git bisect the commits between them.
 
 ```
 ~/c/clint (develop) $ git bisect good master
@@ -353,7 +353,7 @@ Your branch is up-to-date with 'origin/razzi/ur-68'.
 hi
 ```
 
-It's comming from .git/hooks/post-checkout!
+It's coming from .git/hooks/post-checkout!
 
 # That's all!
 
