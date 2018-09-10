@@ -117,6 +117,12 @@ By default, it doesn't show stats (unlike merge). But this is just a git setting
 $ git config --global rebase.stat true
 ```
 
+## `git push --force-with-lease`
+
+`git push --force` will update a remote's branch to be where your local branch is, even if remote has commits you don't have. This is useful when you amend a commit locally - the old commit has is gone - but can also destroy commits on that branch that others have pushed.
+
+Fortunately, if you run `git push --force-with-lease`, the force push will be cancelled if remote has commits that you haven't fetched, which will stop you from destroying work you're unaware of. I recommend always using this option instead of `git push --force`, so I alias `gpf` to `git push --force-with-lease`.
+
 ## Git settings
 
 Git stores settings in 2 places: `.git/config` for the local repository and `~/.gitconfig` for global settings.
@@ -170,7 +176,7 @@ A couple snippets from my `.gitignore_global`:
 
 This is handy for editor-specific files and things you don't want to bother with in every repository.
 
-Pro tip: track your global gitconfig in git! [Here's mine](https://github.com/razzius/dotfiles/blob/master/.gitconfig)
+Pro tip: track your global gitconfig in git! [Here's mine](https://github.com/razzius/dotfiles/blob/master/.gitconfig).
 
 ## git rebase -i
 
