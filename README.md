@@ -10,11 +10,11 @@ Have you ever used `cd -`?
 ~/code/ $
 ```
 
-You can do the same thing with `git checkout -`!
+You can do the same thing with `git switch -`! (you can use checkout too, but switch is a more specific command)
 
 ```bash
-~/code/repo/ (master) $ git checkout develop
-~/code/repo/ (develop) $ git checkout -
+~/code/repo/ (master) $ git switch develop
+~/code/repo/ (develop) $ git switch -
 ~/code/repo/ (master) $
 ```
 
