@@ -1,6 +1,6 @@
 # Git Tricks
 
-## git checkout -
+## git switch -
 
 Have you ever used `cd -`?
 
